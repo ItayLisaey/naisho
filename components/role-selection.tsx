@@ -1,14 +1,5 @@
 "use client";
 
-import {
-  ArrowDown,
-  ArrowUp,
-  AsteriskSquare,
-  Code,
-  HelpCircle,
-  Lock,
-} from "lucide-react";
-import { useState } from "react";
 import { FlowDiagram } from "@/components/flow-diagram";
 import { Button } from "@/components/ui/button";
 import {
@@ -19,6 +10,15 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import {
+  ArrowDown,
+  ArrowUp,
+  AsteriskSquare,
+  Code,
+  HelpCircle,
+  Lock,
+} from "lucide-react";
+import { useState } from "react";
 
 interface RoleSelectionProps {
   onRoleSelect: (role: "writer" | "reader") => void;
@@ -38,30 +38,31 @@ export function RoleSelection({ onRoleSelect }: RoleSelectionProps) {
           <div className="flex items-center justify-center gap-2 mb-4">
             <p className="text-xl text-muted-foreground">
               Confidently pass secrets, API keys, and environment variables
+              <Dialog open={open} onOpenChange={setOpen}>
+                <DialogTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="h-6 w-6 ml-1"
+                    aria-label="How it works"
+                  >
+                    <HelpCircle className="h-5 w-5 text-muted-foreground" />
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-4xl! max-h-[90vh] overflow-y-auto">
+                  <DialogHeader>
+                    <DialogTitle className="text-2xl sr-only">
+                      How It Works: The Flow
+                    </DialogTitle>
+                    <DialogDescription className="sr-only">
+                      See how Writer and Reader interact to securely share
+                      secrets
+                    </DialogDescription>
+                  </DialogHeader>
+                  <FlowDiagram />
+                </DialogContent>
+              </Dialog>
             </p>
-            <Dialog open={open} onOpenChange={setOpen}>
-              <DialogTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="h-6 w-6"
-                  aria-label="How it works"
-                >
-                  <HelpCircle className="h-5 w-5 text-muted-foreground" />
-                </Button>
-              </DialogTrigger>
-              <DialogContent className="max-w-4xl! max-h-[90vh] overflow-y-auto">
-                <DialogHeader>
-                  <DialogTitle className="text-2xl sr-only">
-                    How It Works: The Flow
-                  </DialogTitle>
-                  <DialogDescription className="sr-only">
-                    See how Writer and Reader interact to securely share secrets
-                  </DialogDescription>
-                </DialogHeader>
-                <FlowDiagram />
-              </DialogContent>
-            </Dialog>
           </div>
           <div className="flex items-center justify-center gap-2 mb-8">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
