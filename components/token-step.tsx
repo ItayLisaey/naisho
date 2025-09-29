@@ -72,39 +72,6 @@ function CopyButton({
 }
 
 // Token Display Component for Generated Tokens
-function _TokenDisplay({
-  description,
-  words,
-  copyLabel,
-  title,
-}: {
-  description: string;
-  words: string[];
-  copyLabel: string;
-  title: string;
-}) {
-  return (
-    <div className="space-y-3">
-      <div className="text-left">
-        <span className="text-base text-left font-medium">{title}</span>
-        <p className="text-sm text-muted-foreground mt-1">{description}</p>
-      </div>
-
-      <div className="relative">
-        <div className="text-center p-6 rounded-lg border-2 border-dashed border-gray-300 bg-muted/50 font-mono text-lg font-bold">
-          {words.join(" ")}
-        </div>
-        <CopyButton
-          text={words.join(" ")}
-          label={copyLabel}
-          copiedLabel="Copied to Clipboard!"
-          size="sm"
-          className="absolute bottom-2 right-2"
-        />
-      </div>
-    </div>
-  );
-}
 
 // Token Display Component that converts base64 tokens to display words
 function TokenDisplayFromBase64({
