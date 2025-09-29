@@ -117,7 +117,10 @@ describe("Dicewords", () => {
       mockFetch.mockRejectedValue(new Error("Network error"));
 
       await expect(
-        dicewordsModule.generateDicewordsFromData(new Uint8Array([1, 2, 3, 4]), 4),
+        dicewordsModule.generateDicewordsFromData(
+          new Uint8Array([1, 2, 3, 4]),
+          4,
+        ),
       ).rejects.toThrow("Failed to load dicewords dictionary");
     });
   });
@@ -162,7 +165,10 @@ describe("Dicewords", () => {
 
   describe("Word list caching", () => {
     it("should cache word list across function calls", async () => {
-      await dicewordsModule.generateDicewordsFromData(new Uint8Array([1, 2, 3, 4]), 2);
+      await dicewordsModule.generateDicewordsFromData(
+        new Uint8Array([1, 2, 3, 4]),
+        2,
+      );
       await dicewordsModule.validateDicewords(["apple"]);
       await dicewordsModule.getDicewordCount();
 
@@ -179,7 +185,10 @@ describe("Dicewords", () => {
       });
 
       await expect(
-        dicewordsModule.generateDicewordsFromData(new Uint8Array([1, 2, 3, 4]), 4),
+        dicewordsModule.generateDicewordsFromData(
+          new Uint8Array([1, 2, 3, 4]),
+          4,
+        ),
       ).rejects.toThrow("Failed to load dicewords dictionary");
     });
 

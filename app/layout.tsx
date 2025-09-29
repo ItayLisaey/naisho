@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist_Mono, SUSE } from "next/font/google";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { Footer } from "@/components/footer";
+import { QueryProvider } from "@/components/query-provider";
 import "./globals.css";
 
 const geistMono = Geist_Mono({
@@ -34,10 +35,12 @@ export default function RootLayout({
       <body
         className={` ${geistMono.variable} ${suse.variable} antialiased md:min-h-screen min-h-[100dvh] flex flex-col`}
       >
-        <main className="flex-1">
-          <NuqsAdapter>{children}</NuqsAdapter>
-        </main>
-        <Footer />
+        <QueryProvider>
+          <main className="flex-1">
+            <NuqsAdapter>{children}</NuqsAdapter>
+          </main>
+          <Footer />
+        </QueryProvider>
       </body>
     </html>
   );

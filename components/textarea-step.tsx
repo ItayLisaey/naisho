@@ -6,12 +6,15 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
+import type { WebRTCConnection } from "@/lib/webrtc";
+import { ConnectionDetails } from "./connection-details";
 
 interface TextareaStepProps {
   role: "writer" | "reader";
   text: string;
   onTextChange?: (text: string) => void;
   connectionState: RTCPeerConnectionState;
+  connection?: WebRTCConnection;
 }
 
 export function TextareaStep({
@@ -19,6 +22,7 @@ export function TextareaStep({
   text,
   onTextChange,
   connectionState,
+  connection,
 }: TextareaStepProps) {
   const [flash, setFlash] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -112,15 +116,10 @@ export function TextareaStep({
       </div>
 
       <div className="text-center">
-        <div className="inline-flex items-center gap-2 text-xs text-muted-foreground">
-          <div
-            className={cn(
-              "w-2 h-2 rounded-full",
-              isConnected ? "bg-green-500" : "bg-red-500",
-            )}
-          />
-          {isConnected ? "Connected" : "Disconnected"}
-        </div>
+        <ConnectionDetails
+          connection={connection}
+          connectionState={connectionState}
+        />
       </div>
     </div>
   );

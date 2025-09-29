@@ -1,10 +1,10 @@
 // Jest setup file
-const { TextEncoder, TextDecoder } = require('util');
+const { TextEncoder, TextDecoder } = require("node:util");
 global.TextEncoder = TextEncoder;
 global.TextDecoder = TextDecoder;
 
 // Mock crypto.subtle for Node environment
-Object.defineProperty(global, 'crypto', {
+Object.defineProperty(global, "crypto", {
   value: {
     subtle: {
       digest: jest.fn(),

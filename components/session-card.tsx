@@ -343,6 +343,7 @@ export function SessionCard({ role }: SessionCardProps) {
               onRestart={handleRetry}
               role={role}
               answerToken={state.context.answerToken}
+              connection={state.context.connection}
             />
           )}
 
@@ -351,6 +352,7 @@ export function SessionCard({ role }: SessionCardProps) {
               role={role}
               text={state.context.text}
               onTextChange={handleTextChange}
+              connection={state.context.connection}
               connectionState={state.context.connectionState}
             />
           )}

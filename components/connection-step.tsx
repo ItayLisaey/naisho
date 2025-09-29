@@ -2,12 +2,14 @@
 
 import { Check, Copy, Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
+import { ConnectionDetails } from "@/components/connection-details";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import type { SASResult } from "@/lib/sas";
 import { generateTokenDisplayWords, unpackToken } from "@/lib/token";
 import { cn } from "@/lib/utils";
+import type { WebRTCConnection } from "@/lib/webrtc";
 
 interface ConnectionStepProps {
   connectionState: RTCPeerConnectionState;
@@ -17,6 +19,7 @@ interface ConnectionStepProps {
   onRestart?: () => void;
   role: "writer" | "reader";
   answerToken?: string;
+  connection?: WebRTCConnection;
 }
 
 export function ConnectionStep({
@@ -27,6 +30,7 @@ export function ConnectionStep({
   onRestart,
   role,
   answerToken,
+  connection,
 }: ConnectionStepProps) {
   const [copied, setCopied] = useState(false);
   const [copiedAnswer, setCopiedAnswer] = useState(false);
@@ -87,37 +91,6 @@ export function ConnectionStep({
     }, 1500);
   };
 
-  const getStatusPill = () => {
-    switch (connectionState) {
-      case "connected":
-        return (
-          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
-            Connected
-          </span>
-        );
-      case "connecting":
-        return (
-          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
-            Connecting
-          </span>
-        );
-      case "failed":
-      case "closed":
-      case "disconnected":
-        return (
-          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
-            Disconnected
-          </span>
-        );
-      default:
-        return (
-          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
-            Disconnected
-          </span>
-        );
-    }
-  };
-
   return (
     <div className="space-y-6">
       <div className="text-center">
@@ -173,7 +146,12 @@ export function ConnectionStep({
         </div>
       )}
 
-      <div className="text-center">{getStatusPill()}</div>
+      <div className="text-center">
+        <ConnectionDetails
+          connection={connection}
+          connectionState={connectionState}
+        />
+      </div>
 
       {sas && (
         <div className="space-y-4">

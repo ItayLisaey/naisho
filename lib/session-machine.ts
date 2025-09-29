@@ -20,6 +20,12 @@ const PatchMessageSchema = z.object({
 export type TextMessage = z.infer<typeof TextMessageSchema>;
 export type PatchMessage = z.infer<typeof PatchMessageSchema>;
 
+export interface PeerInfo {
+  ip: string;
+  city?: string;
+  country?: string;
+}
+
 export interface SessionContext {
   role: "writer" | "reader";
   offerToken?: string;
@@ -35,6 +41,7 @@ export interface SessionContext {
   isGeneratingOffer: boolean;
   isCreatingAnswer: boolean;
   isAcceptingAnswer: boolean;
+  peerInfo?: PeerInfo;
 }
 
 export type SessionEvent =
@@ -51,6 +58,7 @@ export type SessionEvent =
   | { type: "CONNECTION_STATE_CHANGED"; state: RTCPeerConnectionState }
   | { type: "SAS_COMPUTED"; sas: SASResult }
   | { type: "SAS_CONFIRMED" }
+  | { type: "PEER_INFO_RECEIVED"; peerInfo: PeerInfo }
   | { type: "TEXT_CHANGED"; text: string }
   | { type: "MESSAGE_RECEIVED"; message: TextMessage }
   | { type: "ERROR"; error: string }
@@ -154,6 +162,12 @@ export const sessionMachine = createMachine({
           target: "connection",
           actions: assign({
             sas: ({ event }) => event.sas,
+          }),
+        },
+        PEER_INFO_RECEIVED: {
+          target: "connection",
+          actions: assign({
+            peerInfo: ({ event }) => event.peerInfo,
           }),
         },
         SAS_CONFIRMED: [

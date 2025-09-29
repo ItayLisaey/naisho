@@ -35,13 +35,21 @@ describe("SAS (Short Authentication String)", () => {
 
     // Mock SHA-256 to return predictable hash
     const mockHashArray = new Uint8Array([
-      0x02, 0xF0, 0x86, // For digits: (0x02 << 16) | (0xF0 << 8) | 0x86 = 193046, 193046 % 1000000 = 193046
-      0x00, 0x01, // word1: index 1 -> "banana"
-      0x00, 0x02, // word2: index 2 -> "cherry"
-      0x00, 0x03, // word3: index 3 -> "dog"
-      0x00, 0x04, // word4: index 4 -> "elephant"
-      0x00, 0x05, // word5: index 5 -> "forest"
-      0x00, 0x06, // word6: index 6 -> "garden"
+      0x02,
+      0xf0,
+      0x86, // For digits: (0x02 << 16) | (0xF0 << 8) | 0x86 = 193046, 193046 % 1000000 = 193046
+      0x00,
+      0x01, // word1: index 1 -> "banana"
+      0x00,
+      0x02, // word2: index 2 -> "cherry"
+      0x00,
+      0x03, // word3: index 3 -> "dog"
+      0x00,
+      0x04, // word4: index 4 -> "elephant"
+      0x00,
+      0x05, // word5: index 5 -> "forest"
+      0x00,
+      0x06, // word6: index 6 -> "garden"
     ]);
     mockDigest.mockResolvedValue(mockHashArray.buffer);
   });
