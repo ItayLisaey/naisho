@@ -1,8 +1,8 @@
+import { Footer } from "@/components/footer";
+import { QueryProvider } from "@/components/query-provider";
 import type { Metadata } from "next";
 import { Geist_Mono, SUSE } from "next/font/google";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
-import { Footer } from "@/components/footer";
-import { QueryProvider } from "@/components/query-provider";
 import "./globals.css";
 
 const geistMono = Geist_Mono({
@@ -22,6 +22,9 @@ export const metadata: Metadata = {
     "Confidently pass secrets, API keys, and environment variables with secure peer-to-peer WebRTC",
   icons: {
     icon: "/favicon.png",
+  },
+  openGraph: {
+    images: "/Naisho - OG - Image.png",
   },
 };
 
