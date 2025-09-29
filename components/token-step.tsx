@@ -3,7 +3,6 @@
 import { Check, Copy } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { generateTokenDisplayWords, unpackToken } from "@/lib/token";
 
@@ -87,8 +86,8 @@ function _TokenDisplay({
   return (
     <div className="space-y-3">
       <div className="text-left">
-        <Label>{title}</Label>
-        <p className="text-muted-foreground mb-2 text-sm">{description}</p>
+        <span className="text-base text-left font-medium">{title}</span>
+        <p className="text-sm text-muted-foreground mt-1">{description}</p>
       </div>
 
       <div className="relative">
@@ -117,7 +116,7 @@ function TokenDisplayFromBase64({
   description: string;
   token: string;
   copyLabel: string;
-  title: string;
+  title: React.ReactNode;
 }) {
   const [displayWords, setDisplayWords] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -148,8 +147,8 @@ function TokenDisplayFromBase64({
   return (
     <div className="space-y-3">
       <div className="text-left">
-        <Label>{title}</Label>
-        <p className="text-muted-foreground mb-2 text-sm">{description}</p>
+        <span className="text-base text-left font-medium">{title}</span>
+        <p className="text-sm text-muted-foreground mt-1">{description}</p>
       </div>
 
       <div className="relative">
@@ -182,7 +181,7 @@ function TokenInput({
   loadingText,
 }: {
   id: string;
-  label: string;
+  label: React.ReactNode;
   description: string;
   value: string;
   onChange: (value: string) => void;
@@ -255,8 +254,10 @@ function TokenInput({
 
   return (
     <div>
-      <Label htmlFor={id}>{label}</Label>
-      <p className="text-sm text-muted-foreground mb-2">{description}</p>
+      <div className="text-left">
+        <span className="text-base text-left font-medium">{label}</span>
+        <p className="text-sm text-muted-foreground mt-1 mb-4">{description}</p>
+      </div>
       <div className="space-y-2">
         <Textarea
           id={id}
@@ -329,7 +330,10 @@ function WriterTokenFlow({
       {!offerToken && !isGeneratingOffer ? (
         <div className="text-center">
           <Button onClick={onGenerateOffer} size="lg" className="px-8">
-            Generate Invite (O1)
+            Generate Invite{" "}
+            <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-purple-100 text-purple-800 ml-2">
+              O1
+            </span>
           </Button>
         </div>
       ) : isGeneratingOffer ? (
@@ -337,15 +341,29 @@ function WriterTokenFlow({
       ) : (
         <div className="space-y-4">
           <TokenDisplayFromBase64
-            description="Your invite token has been generated and is ready to share with your colleague. (O1)"
+            description="Your invite token has been generated and is ready to share with your colleague."
             token={offerToken || ""}
             copyLabel="Copy Invite"
-            title="Invite Token (O1)"
+            title={
+              <>
+                Invite Token{" "}
+                <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-purple-100 text-purple-800">
+                  O1
+                </span>
+              </>
+            }
           />
 
           <TokenInput
             id="answer-token"
-            label="Paste Answer (A1)"
+            label={
+              <>
+                Paste Answer{" "}
+                <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-blue-100 text-blue-800">
+                  A1
+                </span>
+              </>
+            }
             description="Paste the answer token from your colleague here. It will automatically convert to readable words."
             value={pastedToken}
             onChange={setPastedToken}
@@ -390,13 +408,20 @@ function ReaderTokenFlow({
       {!answerToken ? (
         <TokenInput
           id="invite-token"
-          label="Paste Invite (O1)"
+          label={
+            <>
+              Paste Invite{" "}
+              <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-purple-100 text-purple-800">
+                O1
+              </span>
+            </>
+          }
           description="Paste the invite token from your colleague here. It will automatically convert to readable words."
           value={pastedToken}
           onChange={setPastedToken}
           onSubmit={handleConnect}
           placeholder="Paste the invite token from your colleague here..."
-          submitLabel="Create Answer (A1)"
+          submitLabel="Create Answer"
           isLoading={isCreatingAnswer}
           loadingText="Creating Answer..."
         />
@@ -405,7 +430,14 @@ function ReaderTokenFlow({
           description="Your answer token has been created. Copy it and share it back with your colleague."
           token={answerToken || ""}
           copyLabel="Copy Answer"
-          title="Answer Token (A1)"
+          title={
+            <>
+              Answer Token{" "}
+              <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-blue-100 text-blue-800">
+                A1
+              </span>
+            </>
+          }
         />
       )}
     </div>

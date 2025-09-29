@@ -1,11 +1,11 @@
 "use client";
 
-import { getGeolocation } from "@/lib/geolocation";
-import { cn } from "@/lib/utils";
-import type { WebRTCConnection } from "@/lib/webrtc";
 import { useQuery } from "@tanstack/react-query";
 import { Globe, MapPin } from "lucide-react";
 import { useEffect, useState } from "react";
+import { getGeolocation } from "@/lib/geolocation";
+import { cn } from "@/lib/utils";
+import type { WebRTCConnection } from "@/lib/webrtc";
 
 interface ConnectionDetailsProps {
   connection?: WebRTCConnection;

@@ -104,9 +104,12 @@ export function ConnectionStep({
 
       {role === "reader" && answerToken && (
         <div>
-          <div className="text-center">
-            <span className="text-base text-center font-medium">
-              Answer Token
+          <div className="text-left">
+            <span className="text-base text-left font-medium">
+              Answer Token{" "}
+              <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-blue-100 text-blue-800">
+                A1
+              </span>
             </span>
             <p className="text-sm text-muted-foreground mt-1 mb-4">
               Copy these 8 words and share them with your colleague to establish
@@ -155,9 +158,12 @@ export function ConnectionStep({
 
       {sas && (
         <div className="space-y-4">
-          <div className="text-center">
-            <span className="text-base text-center font-medium">
-              Short Authentication String (SAS)
+          <div className="text-left">
+            <span className="text-base text-left font-medium">
+              Short Authentication String{" "}
+              <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-orange-100 text-orange-800">
+                SAS
+              </span>
             </span>
             <p className="text-sm text-muted-foreground mt-1">
               Compare this code with your peer to ensure secure connection
