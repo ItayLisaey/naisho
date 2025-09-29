@@ -21,9 +21,9 @@ interface TokenStepProps {
 // Reusable Loading Spinner Component
 function LoadingSpinner({ text }: { text?: string }) {
   return (
-    <div className='text-center p-8'>
-      <div className='animate-spin w-6 h-6 border-2 border-primary border-t-transparent rounded-full mx-auto mb-4' />
-      {text && <p className='text-muted-foreground'>{text}</p>}
+    <div className="text-center p-8">
+      <div className="animate-spin w-6 h-6 border-2 border-primary border-t-transparent rounded-full mx-auto mb-4" />
+      {text && <p className="text-muted-foreground">{text}</p>}
     </div>
   );
 }
@@ -58,13 +58,13 @@ function CopyButton({
     <Button
       onClick={handleCopy}
       size={size}
-      variant='outline'
+      variant="outline"
       className={className}
     >
       {copied ? (
-        <Check className='h-4 w-4 mr-2' />
+        <Check className="h-4 w-4 mr-2" />
       ) : (
-        <Copy className='h-4 w-4 mr-2' />
+        <Copy className="h-4 w-4 mr-2" />
       )}
       {copied ? copiedLabel : label}
     </Button>
@@ -84,22 +84,22 @@ function _TokenDisplay({
   title: string;
 }) {
   return (
-    <div className='space-y-3'>
-      <div className='text-left'>
-        <span className='text-base text-left font-medium'>{title}</span>
-        <p className='text-sm text-muted-foreground mt-1'>{description}</p>
+    <div className="space-y-3">
+      <div className="text-left">
+        <span className="text-base text-left font-medium">{title}</span>
+        <p className="text-sm text-muted-foreground mt-1">{description}</p>
       </div>
 
-      <div className='relative'>
-        <div className='text-center p-6 rounded-lg border-2 border-dashed border-gray-300 bg-muted/50 font-mono text-lg font-bold'>
+      <div className="relative">
+        <div className="text-center p-6 rounded-lg border-2 border-dashed border-gray-300 bg-muted/50 font-mono text-lg font-bold">
           {words.join(" ")}
         </div>
         <CopyButton
           text={words.join(" ")}
           label={copyLabel}
-          copiedLabel='Copied to Clipboard!'
-          size='sm'
-          className='absolute bottom-2 right-2'
+          copiedLabel="Copied to Clipboard!"
+          size="sm"
+          className="absolute bottom-2 right-2"
         />
       </div>
     </div>
@@ -141,26 +141,26 @@ function TokenDisplayFromBase64({
   }, [token]);
 
   if (isLoading) {
-    return <LoadingSpinner text='Generating display words...' />;
+    return <LoadingSpinner text="Generating display words..." />;
   }
 
   return (
-    <div className='space-y-3'>
-      <div className='text-left'>
-        <span className='text-base text-left font-medium'>{title}</span>
-        <p className='text-sm text-muted-foreground mt-1'>{description}</p>
+    <div className="space-y-3">
+      <div className="text-left">
+        <span className="text-base text-left font-medium">{title}</span>
+        <p className="text-sm text-muted-foreground mt-1">{description}</p>
       </div>
 
-      <div className='relative'>
-        <div className='text-center p-6 rounded-lg border-2 border-dashed border-gray-300 bg-muted/50 font-mono text-lg font-bold'>
+      <div className="relative">
+        <div className="text-center p-6 rounded-lg border-2 border-dashed border-gray-300 bg-muted/50 font-mono text-lg font-bold">
           {displayWords.join(" ")}
         </div>
         <CopyButton
           text={token}
           label={copyLabel}
-          copiedLabel='Copied to Clipboard!'
-          size='sm'
-          className='absolute bottom-2 right-2'
+          copiedLabel="Copied to Clipboard!"
+          size="sm"
+          className="absolute bottom-2 right-2"
         />
       </div>
     </div>
@@ -212,7 +212,7 @@ function TokenInput({
         onChange(trimmed);
         console.log(
           "Auto-translated base64 token to display words:",
-          displayWords
+          displayWords,
         );
       } catch (error) {
         console.log("Failed to parse as token, using raw input:", error);
@@ -254,11 +254,11 @@ function TokenInput({
 
   return (
     <div>
-      <div className='text-left'>
-        <span className='text-base text-left font-medium'>{label}</span>
-        <p className='text-sm text-muted-foreground mt-1 mb-4'>{description}</p>
+      <div className="text-left">
+        <span className="text-base text-left font-medium">{label}</span>
+        <p className="text-sm text-muted-foreground mt-1 mb-4">{description}</p>
       </div>
-      <div className='space-y-2'>
+      <div className="space-y-2">
         <Textarea
           id={id}
           value={displayValue}
@@ -271,21 +271,21 @@ function TokenInput({
             handlePaste(pastedText);
           }}
           placeholder={placeholder}
-          className='font-mono h-32'
+          className="font-mono h-32"
         />
         {isTranslating && (
-          <p className='text-sm text-muted-foreground'>
+          <p className="text-sm text-muted-foreground">
             Converting token to display words...
           </p>
         )}
         <Button
           onClick={handleSubmit}
           disabled={!isValidToken || isLoading}
-          className='w-full'
+          className="w-full"
         >
           {isLoading && loadingText ? (
-            <div className='flex items-center gap-2'>
-              <div className='animate-spin w-4 h-4 border-2 border-current border-t-transparent rounded-full' />
+            <div className="flex items-center gap-2">
+              <div className="animate-spin w-4 h-4 border-2 border-current border-t-transparent rounded-full" />
               {loadingText}
             </div>
           ) : (
@@ -319,35 +319,35 @@ function WriterTokenFlow({
   };
 
   return (
-    <div className='space-y-6'>
-      <div className='text-center'>
-        <h2 className='text-2xl font-semibold mb-2'>Share Secrets</h2>
-        <p className='text-muted-foreground'>
+    <div className="space-y-6">
+      <div className="text-center">
+        <h2 className="text-2xl font-semibold mb-2">Share Secrets</h2>
+        <p className="text-muted-foreground">
           Generate an invite token for your colleague
         </p>
       </div>
 
       {!offerToken && !isGeneratingOffer ? (
-        <div className='text-center'>
-          <Button onClick={onGenerateOffer} size='lg' className='px-8'>
+        <div className="text-center">
+          <Button onClick={onGenerateOffer} size="lg" className="px-8">
             Generate Invite{" "}
-            <span className='inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-300 ml-2'>
+            <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-300 ml-2">
               O1
             </span>
           </Button>
         </div>
       ) : isGeneratingOffer ? (
-        <LoadingSpinner text='Generating secure invite token...' />
+        <LoadingSpinner text="Generating secure invite token..." />
       ) : (
-        <div className='space-y-4'>
+        <div className="space-y-4">
           <TokenDisplayFromBase64
-            description='Your invite token has been generated and is ready to share with your colleague.'
+            description="Your invite token has been generated and is ready to share with your colleague."
             token={offerToken || ""}
-            copyLabel='Copy Invite'
+            copyLabel="Copy Invite"
             title={
               <>
                 Invite Token{" "}
-                <span className='inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300'>
+                <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300">
                   O1
                 </span>
               </>
@@ -355,23 +355,23 @@ function WriterTokenFlow({
           />
 
           <TokenInput
-            id='answer-token'
+            id="answer-token"
             label={
               <>
                 Paste Answer{" "}
-                <span className='inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300'>
+                <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300">
                   A1
                 </span>
               </>
             }
-            description='Paste the answer token from your colleague here. It will automatically convert to readable words.'
+            description="Paste the answer token from your colleague here. It will automatically convert to readable words."
             value={pastedToken}
             onChange={setPastedToken}
             onSubmit={handleConnect}
-            placeholder='Paste the answer token from your colleague here...'
-            submitLabel='Connect'
+            placeholder="Paste the answer token from your colleague here..."
+            submitLabel="Connect"
             isLoading={isAcceptingAnswer}
-            loadingText='Connecting...'
+            loadingText="Connecting..."
           />
         </div>
       )}
@@ -397,43 +397,43 @@ function ReaderTokenFlow({
   };
 
   return (
-    <div className='space-y-6'>
-      <div className='text-center'>
-        <h2 className='text-2xl font-semibold mb-2'>Receive Secrets</h2>
-        <p className='text-muted-foreground'>
+    <div className="space-y-6">
+      <div className="text-center">
+        <h2 className="text-2xl font-semibold mb-2">Receive Secrets</h2>
+        <p className="text-muted-foreground">
           Paste the invite token from your colleague
         </p>
       </div>
 
       {!answerToken ? (
         <TokenInput
-          id='invite-token'
+          id="invite-token"
           label={
             <>
               Paste Invite{" "}
-              <span className='inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300'>
+              <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300">
                 O1
               </span>
             </>
           }
-          description='Paste the invite token from your colleague here. It will automatically convert to readable words.'
+          description="Paste the invite token from your colleague here. It will automatically convert to readable words."
           value={pastedToken}
           onChange={setPastedToken}
           onSubmit={handleConnect}
-          placeholder='Paste the invite token from your colleague here...'
-          submitLabel='Create Answer'
+          placeholder="Paste the invite token from your colleague here..."
+          submitLabel="Create Answer"
           isLoading={isCreatingAnswer}
-          loadingText='Creating Answer...'
+          loadingText="Creating Answer..."
         />
       ) : (
         <TokenDisplayFromBase64
-          description='Your answer token has been created. Copy it and share it back with your colleague.'
+          description="Your answer token has been created. Copy it and share it back with your colleague."
           token={answerToken || ""}
-          copyLabel='Copy Answer'
+          copyLabel="Copy Answer"
           title={
             <>
               Answer Token{" "}
-              <span className='inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300'>
+              <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300">
                 A1
               </span>
             </>

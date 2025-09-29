@@ -1,9 +1,8 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
-import { Globe, MapPin } from "lucide-react";
+import { Globe } from "lucide-react";
 import { useEffect, useState } from "react";
-import { getGeolocation } from "@/lib/geolocation";
+import { IPGeolocation } from "@/components/ip-geolocation";
 import { cn } from "@/lib/utils";
 import type { WebRTCConnection } from "@/lib/webrtc";
 
@@ -60,17 +59,6 @@ export function ConnectionDetails({
     return () => clearInterval(interval);
   }, [connection, connectionState]);
 
-  const { data: geoData, isLoading } = useQuery({
-    queryKey: ["geolocation", peerIp],
-    queryFn: () => {
-      if (!peerIp) throw new Error("No peer IP available");
-      return getGeolocation(peerIp);
-    },
-    enabled: !!peerIp && connectionState === "connected",
-    staleTime: Number.POSITIVE_INFINITY,
-    retry: 1,
-  });
-
   if (connectionState !== "connected") {
     return (
       <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
@@ -79,7 +67,7 @@ export function ConnectionDetails({
     );
   }
 
-  if (!peerIp || isLoading) {
+  if (!peerIp) {
     return (
       <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
         Connected
@@ -98,20 +86,9 @@ export function ConnectionDetails({
         Connected
       </span>
 
-      <div className="flex flex-col items-center gap-2 text-sm text-muted-foreground">
-        <div className="flex items-center gap-2">
-          <Globe className="h-4 w-4" />
-          <span className="font-mono">{geoData?.ip || peerIp}</span>
-        </div>
-
-        {geoData?.city && geoData?.country && (
-          <div className="flex items-center gap-2">
-            <MapPin className="h-4 w-4" />
-            <span>
-              {geoData.city}, {geoData.country}
-            </span>
-          </div>
-        )}
+      <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+        <Globe className="h-4 w-4" />
+        <IPGeolocation ip={peerIp} />
       </div>
     </div>
   );
