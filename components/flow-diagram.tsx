@@ -10,13 +10,13 @@ export function FlowDiagram() {
 
         <div className="space-y-4">
           {/* Step 1: Writer generates invite */}
-          <div className="bg-muted/50 p-5 rounded-lg border border-l-4 border-l-purple-500">
+          <div className="bg-muted/50 p-5 rounded-lg border border-l-4 border-l-purple-500 dark:border-l-purple-400">
             <div className="flex items-center gap-2 mb-2">
-              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-purple-100 text-purple-800 text-xs font-bold">
+              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 text-xs font-bold">
                 1
               </span>
               <h4 className="font-semibold text-sm">Generate Invite Token</h4>
-              <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-purple-100 text-purple-800">
+              <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300">
                 O1
               </span>
             </div>
@@ -30,7 +30,7 @@ export function FlowDiagram() {
           {/* Step 2: Writer waits */}
           <div className="bg-muted/30 p-5 rounded-lg border border-dashed">
             <div className="flex items-center gap-2 mb-2">
-              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-gray-100 text-gray-600 text-xs font-bold">
+              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-muted text-muted-foreground text-xs font-bold">
                 2
               </span>
               <h4 className="font-semibold text-sm text-muted-foreground">
@@ -43,13 +43,13 @@ export function FlowDiagram() {
           </div>
 
           {/* Step 3: Writer pastes answer */}
-          <div className="bg-muted/50 p-5 rounded-lg border border-l-4 border-l-blue-500">
+          <div className="bg-muted/50 p-5 rounded-lg border border-l-4 border-l-blue-500 dark:border-l-blue-400">
             <div className="flex items-center gap-2 mb-2">
-              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-blue-100 text-blue-800 text-xs font-bold">
+              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 text-xs font-bold">
                 3
               </span>
               <h4 className="font-semibold text-sm">Paste Answer Token</h4>
-              <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-blue-100 text-blue-800">
+              <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300">
                 A1
               </span>
             </div>
@@ -60,13 +60,13 @@ export function FlowDiagram() {
           </div>
 
           {/* Step 4: Writer verifies SAS */}
-          <div className="bg-muted/50 p-5 rounded-lg border border-l-4 border-l-orange-500">
+          <div className="bg-muted/50 p-5 rounded-lg border border-l-4 border-l-orange-500 dark:border-l-orange-400">
             <div className="flex items-center gap-2 mb-2">
-              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-orange-100 text-orange-800 text-xs font-bold">
+              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-300 text-xs font-bold">
                 4
               </span>
               <h4 className="font-semibold text-sm">Verify Security Code</h4>
-              <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-orange-100 text-orange-800">
+              <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-300">
                 SAS
               </span>
             </div>
@@ -78,9 +78,9 @@ export function FlowDiagram() {
           </div>
 
           {/* Step 5: Writer shares secret */}
-          <div className="bg-muted/50 p-5 rounded-lg border border-l-4 border-l-green-500">
+          <div className="bg-muted/50 p-5 rounded-lg border border-l-4 border-l-green-500 dark:border-l-green-400">
             <div className="flex items-center gap-2 mb-2">
-              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-green-100 text-green-800 text-xs font-bold">
+              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 text-xs font-bold">
                 5
               </span>
               <h4 className="font-semibold text-sm">Share Secret</h4>
@@ -104,7 +104,7 @@ export function FlowDiagram() {
           {/* Step 1: Reader waits */}
           <div className="bg-muted/30 p-5 rounded-lg border border-dashed">
             <div className="flex items-center gap-2 mb-2">
-              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-gray-100 text-gray-600 text-xs font-bold">
+              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-muted text-muted-foreground text-xs font-bold">
                 1
               </span>
               <h4 className="font-semibold text-sm text-muted-foreground">
@@ -117,13 +117,13 @@ export function FlowDiagram() {
           </div>
 
           {/* Step 2: Reader pastes invite */}
-          <div className="bg-muted/50 p-5 rounded-lg border border-l-4 border-l-purple-500">
+          <div className="bg-muted/50 p-5 rounded-lg border border-l-4 border-l-purple-500 dark:border-l-purple-400">
             <div className="flex items-center gap-2 mb-2">
-              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-purple-100 text-purple-800 text-xs font-bold">
+              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 text-xs font-bold">
                 2
               </span>
               <h4 className="font-semibold text-sm">Paste Invite Token</h4>
-              <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-purple-100 text-purple-800">
+              <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300">
                 O1
               </span>
             </div>
@@ -134,13 +134,13 @@ export function FlowDiagram() {
           </div>
 
           {/* Step 3: Reader shares answer */}
-          <div className="bg-muted/50 p-5 rounded-lg border border-l-4 border-l-blue-500">
+          <div className="bg-muted/50 p-5 rounded-lg border border-l-4 border-l-blue-500 dark:border-l-blue-400">
             <div className="flex items-center gap-2 mb-2">
-              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-blue-100 text-blue-800 text-xs font-bold">
+              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 text-xs font-bold">
                 3
               </span>
               <h4 className="font-semibold text-sm">Share Answer Token</h4>
-              <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-blue-100 text-blue-800">
+              <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300">
                 A1
               </span>
             </div>
@@ -151,13 +151,13 @@ export function FlowDiagram() {
           </div>
 
           {/* Step 4: Reader verifies SAS */}
-          <div className="bg-muted/50 p-5 rounded-lg border border-l-4 border-l-orange-500">
+          <div className="bg-muted/50 p-5 rounded-lg border border-l-4 border-l-orange-500 dark:border-l-orange-400">
             <div className="flex items-center gap-2 mb-2">
-              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-orange-100 text-orange-800 text-xs font-bold">
+              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-300 text-xs font-bold">
                 4
               </span>
               <h4 className="font-semibold text-sm">Verify Security Code</h4>
-              <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-orange-100 text-orange-800">
+              <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-300">
                 SAS
               </span>
             </div>
@@ -169,9 +169,9 @@ export function FlowDiagram() {
           </div>
 
           {/* Step 5: Reader receives secret */}
-          <div className="bg-muted/50 p-5 rounded-lg border border-l-4 border-l-green-500">
+          <div className="bg-muted/50 p-5 rounded-lg border border-l-4 border-l-green-500 dark:border-l-green-400">
             <div className="flex items-center gap-2 mb-2">
-              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-green-100 text-green-800 text-xs font-bold">
+              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 text-xs font-bold">
                 5
               </span>
               <h4 className="font-semibold text-sm">Receive Secret</h4>

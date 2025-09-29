@@ -49,7 +49,7 @@ export default function WhitepaperPage() {
           </h2>
           <p className="text-lg leading-relaxed mb-4">
             <strong>Short Authentication String</strong>{" "}
-            <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-orange-100 text-orange-800">
+            <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-300">
               SAS
             </span>
             : To ensure you're communicating with the intended person and not a
@@ -68,8 +68,8 @@ export default function WhitepaperPage() {
             </li>
           </ol>
 
-          <p className="text-lg leading-relaxed bg-red-50 border border-red-200 p-4 rounded-lg">
-            <AlertTriangle className="size-6  inline-block mr-2 text-red-400" />
+          <p className="text-lg leading-relaxed bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 p-4 rounded-lg">
+            <AlertTriangle className="size-6  inline-block mr-2 text-red-400 dark:text-red-500" />
             You must compare this SAS code with your peer through a separate,
             trusted channel (like in person, phone call, or secure messaging).
             If the codes match, you can be confident you're communicating
@@ -112,11 +112,11 @@ export default function WhitepaperPage() {
           <h3 className="text-xl font-semibold mb-3">Signaling Token Safety</h3>
           <p className="text-lg leading-relaxed mb-4">
             The invite{" "}
-            <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-purple-100 text-purple-800">
+            <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300">
               O1
             </span>{" "}
             and answer{" "}
-            <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-blue-100 text-blue-800">
+            <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300">
               A1
             </span>{" "}
             tokens contain connection information but no message content.
